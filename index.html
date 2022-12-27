@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Intro section with dropdown navigation</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .list img{
+      margin-right: 1rem;
+    }
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  
+  <header>
+    <nav class="snap__navbar">
+      <div class="part-1">
+        <div class="snap__navbar-image">
+            <img src="images/logo.svg" alt="snap">
+        </div>
+        
+        <div class="snap__navbar-nav">
+          <ul>
+            <li id="drop"><a href="#">Features <img src="images/icon-arrow-down.svg" id="arrow1"></a>
+              <ul id="dropped">
+                <li><a href="#"><img src="images/icon-todo.svg" alt="todo">Todo List</a></li>
+                <li><a href="#"><img src="images/icon-calendar.svg" alt="todo">Calender</a></li>
+                <li><a href="#"><img src="images/icon-reminders.svg" alt="todo">Reminders</a></li>
+                <li><a href="#"><img src="images/icon-planning.svg" alt="todo">Planning</a></li>
+              </ul>
+            </li>
+            <li id="drop"><a href="#">Company <img src="images/icon-arrow-down.svg" id="arrow2"></a>
+              <ul class="nd">
+                <li><a href="#">History</a></li>
+                <li><a href="#">Our Team</a></li>
+                <li><a href="#">Blog</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">About</a></li>
+            <div class="snap__mobile-navbar-btns">
+              <button>Login</button>
+              <button>Register</button>
+            </div>
+          </ul>
+        </div>
+        <div class="overlay"></div>
+      </div>
+      <div class="snap__navbar-btns">
+        <button>Login</button>
+        <button>Register</button>
+          <img src="images/icon-menu.svg" alt="" class="ham">
+      </div>
+    </nav>
+    <div class="snap__hero">
+      <div class="snap__hero-content">
+        <div>
+          <h1>Make remote work</h1>
+        <p>Get your team in sync, no matter your location. Streamline processes, 
+          create team rituals, and watch productivity soar.</p>
+        <button>Learn more</button>
+        </div>
+        <div class="snap__hero-content-client">
+          <img src="images/client-databiz.svg" alt="">
+          <img src="images/client-audiophile.svg" alt="">
+          <img src="images/client-meet.svg" alt="">
+          <img src="images/client-maker.svg" alt="">
+        </div>
+      </div>
+      <div class="snap__hero-image">
+        <picture>
+          <source media="(min-width: 500px)" srcset="images/image-hero-desktop.png">
+          <img src="images/image-hero-mobile.png" alt="hero">
+        </picture>
+      </div>
+    </div>
+  </header>
+  
+
+  
+
+  
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+
+  <script>
+    const drops = document.querySelectorAll('#drop')
+    const dropped = document.querySelectorAll('#dropped')
+    const arrow1 = document.querySelector('#arrow1')
+    const arrow2 = document.querySelector('#arrow2')
+    let isToggled1 = false
+    let isToggled2 = false
+
+    drops.forEach((drop) => {
+      drop.addEventListener('click', () => {
+        drop.classList.toggle('active')
+      })
+    })
+    drops[0].addEventListener('click', () => {
+      if (!isToggled1) {
+        isToggled1 = true
+        arrow1.src = 'images/icon-arrow-up.svg'
+      } else {
+        isToggled1 = false
+        arrow1.src = 'images/icon-arrow-down.svg'
+      }
+      // arrow1.classList.add('blue')
+    })
+    drops[1].addEventListener('click', () => {
+      if (!isToggled2) {
+        isToggled2 = true
+        arrow2.src = 'images/icon-arrow-up.svg'
+      } else {
+        isToggled2 = false
+        arrow2.src = 'images/icon-arrow-down.svg'
+      }
+    })
+    
+    let mNavT = false
+    const nav = document.querySelector('.snap__navbar-nav')
+    const ham = document.querySelector('.ham')
+
+    
+
+    ham.addEventListener('click',() => {
+      mNavT = !mNavT
+      nav.classList.toggle('active')
+      console.log(mNavT)
+      if (mNavT) {
+
+        ham.src = 'images/icon-close-menu.svg'
+      } else {
+        ham.src = 'images/icon-menu.svg'
+      }
+    })
+
+  </script>
+</body>
+</html>
